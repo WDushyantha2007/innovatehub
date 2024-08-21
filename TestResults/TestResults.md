@@ -1,24 +1,36 @@
-1. Product Crud
+1.Product Crud
 
 a. Find All product
 
-Request GET http://localhost:8080/product
+Request
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
+GET http://localhost:8080/product
 
 Response
 
+Status : 200 OK
+
+[
 {
-"productId": 0,
+"productId": 1,
 "productName": "t",
 "brand": "t",
 "description": "t",
 "productUrl": "t"
 }
+]
 
 b. Create New Product
 
-Request POST http://localhost:8080/product
+Request
 
-Response
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
+POST http://localhost:8080/product
 
 {
 "productId": 0,
@@ -28,7 +40,26 @@ Response
 "productUrl": "t"
 }
 
-c. Update
+Response
+
+Status : 200 OK
+
+{
+"productId": 0,
+"productName": "t",
+"brand": "t",
+"description": "t",
+"productUrl": "t",
+"message": "Product saved successfully",
+"statusCode": "OK"
+}
+
+c. Update new product
+
+Request
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
 
 PUT http://localhost:8080/product
 
@@ -42,20 +73,34 @@ PUT http://localhost:8080/product
 
 Response
 
-Status : OK
+Status : 200 OK
 
 d. Delete Product
+
+Request : 
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
 
 DELETE http://localhost:8080/product/2
 
 Response
-Status : OK
+Status : 200 OK
 
 2. Order Crud
 
-a. Find All Orders GET http://localhost:8080/order
+a. Find All Orders 
+
+Request
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
+GET http://localhost:8080/order
 
 Response
+
+Status : 200 OK
 
 [
 {
@@ -64,30 +109,14 @@ Response
 }
 ]
 
-e. Try to create invalid product
-
-POST http://localhost:8080/product
-
-{
-"productId": 0,
-"productName": "",
-"brand": "t",
-"description": "t",
-"productUrl": "t"
-}
-
-Response
-
-{
-"productId": 0,
-"productName": "",
-"brand": "t",
-"description": "t",
-"productUrl": "t",
-"message": "Invalid product"
-}
-
 b. Create New Order
+
+Request
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
+POST http://localhost:8080/order
 
     {
         "orderId": 1,
@@ -96,20 +125,45 @@ b. Create New Order
 
 Response :
 
-Status : OK
+Status : 200 OK
+
+{
+"orderId": 1,
+"orderName": "u",
+"message": "Order saved successfully",
+"statusCode": "OK"
+}
 
 c. Update Order
+
+Request
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
+PUT http://localhost:8080/order
 
     {
         "orderId": 2,
         "orderName": "m"
     }
 
-Response : Status : OK
+Response : 
 
-Delete Order DELETE http://localhost:8080/order/2
+Status : 200 OK
 
-Response : Status OK
+Delete Order 
+
+Request
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
+DELETE http://localhost:8080/order/2
+
+Response : 
+
+Status : 200 OK
 
 3. User Crud
 
@@ -117,12 +171,22 @@ a. Find all members
 
 GET http://localhost:8080/member
 
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
 Response :
+
+Status : 200 OK
 
 [
 {
 "memberId": 1,
 "memberName": "t",
+"memberUrl": "t"
+},
+{
+"memberId": 3,
+"memberName": "b",
 "memberUrl": "t"
 }
 ]
@@ -131,6 +195,9 @@ b. Save a member
 
 POST http://localhost:8080/member
 
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
 {
 "memberId": 1,
 "memberName": "u",
@@ -139,13 +206,20 @@ POST http://localhost:8080/member
 
 Response :
 
+Status : 200 OK
+
 {
 "memberId": 1,
 "memberName": "u",
-"memberUrl": "t"
+"memberUrl": "t",
+"message": "member saved sucessfully",
+"statusCode": "OK"
 }
 
 c. Update a member :
+
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
 
 {
 "memberId": 2,
@@ -153,13 +227,25 @@ c. Update a member :
 "memberUrl": "t"
 }
 
-Response : status ok
+Response : Status : 200 OK
 
 d. Delete member
 
+Header
+tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
+
 DELETE http://localhost:8080/member/2
 
-Response: Status OK
+Response: Status : 200 OK
 
+4. Authorization Request
 
+a. Request POST http://localhost:8080/login
+
+{
+"userId": 1,
+"bCryptPassword": "$2a$12$gUx/v.wOsIdFctF.vzZ4p.8/PlBMaTM.JKCI.yR/FCMSzxk2NHhIu"
+}
+
+Response : 2a0716a8-f107-423a-a1d3-f4478266311c
 

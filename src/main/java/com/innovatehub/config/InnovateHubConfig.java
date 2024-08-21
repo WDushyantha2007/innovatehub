@@ -6,18 +6,21 @@ import com.innovatehub.login.service.LoginService;
 import com.innovatehub.login.service.LoginServiceImpl;
 import com.innovatehub.order.dao.JdbcOrderRepository;
 import com.innovatehub.order.dao.OrderRepository;
+import com.innovatehub.order.proxy.OrderProxyService;
 import com.innovatehub.order.proxy.OrderServiceProxyImpl;
 import com.innovatehub.order.service.OrderService;
 import com.innovatehub.order.service.OrderServiceImpl;
 import com.innovatehub.order.validator.OrderValidator;
 import com.innovatehub.product.dao.JdbcProductRepository;
 import com.innovatehub.product.dao.ProductRepository;
+import com.innovatehub.product.proxy.ProductServiceProxy;
 import com.innovatehub.product.proxy.ProductServiceProxyImpl;
 import com.innovatehub.product.service.ProductService;
 import com.innovatehub.product.service.ProductServiceImpl;
 import com.innovatehub.product.validator.ProductValidator;
 import com.innovatehub.user.dao.JdbcMemberRepository;
 import com.innovatehub.user.dao.MemberRepository;
+import com.innovatehub.user.proxy.UserServiceProxy;
 import com.innovatehub.user.proxy.UserServiceProxyImpl;
 import com.innovatehub.user.service.UserService;
 import com.innovatehub.user.service.UserServiceImpl;
@@ -42,19 +45,19 @@ public class InnovateHubConfig {
 
     @Bean
     @Qualifier("orderServiceProxy")
-    public OrderService orderServiceProxy() {
+    public OrderProxyService orderServiceProxy() {
         return new OrderServiceProxyImpl(orderService(), orderValidator());
     }
 
     @Bean
     @Qualifier("productServiceProxy")
-    public ProductService productServiceProxy() {
+    public ProductServiceProxy productServiceProxy() {
         return new ProductServiceProxyImpl(productService(), productValidator());
     }
 
     @Bean
     @Qualifier("userServiceProxy")
-    public UserService userServiceProxy() {
+    public UserServiceProxy userServiceProxy() {
         return new UserServiceProxyImpl(userService(), userValidator());
     }
 
