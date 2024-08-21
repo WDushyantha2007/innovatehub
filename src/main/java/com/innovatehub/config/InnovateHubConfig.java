@@ -1,5 +1,9 @@
 package com.innovatehub.config;
 
+import com.innovatehub.login.dao.UserJdbcRepository;
+import com.innovatehub.login.dao.UserRepository;
+import com.innovatehub.login.service.LoginService;
+import com.innovatehub.login.service.LoginServiceImpl;
 import com.innovatehub.order.dao.JdbcOrderRepository;
 import com.innovatehub.order.dao.OrderRepository;
 import com.innovatehub.order.proxy.OrderServiceProxyImpl;
@@ -73,6 +77,11 @@ public class InnovateHubConfig {
     }
 
     @Bean
+    public LoginService loginService() {
+        return new LoginServiceImpl(userRepository());
+    }
+
+    @Bean
     public ProductRepository productRepository() {
         ProductRepository productRepository = new JdbcProductRepository(jdbcTemplate);
         return productRepository;
@@ -93,6 +102,12 @@ public class InnovateHubConfig {
     @Bean
     public OrderValidator orderValidator() {
         return new OrderValidator();
+    }
+
+    @Bean
+    public UserRepository userRepository() {
+        UserRepository userRepository = new UserJdbcRepository(jdbcTemplate);
+        return userRepository;
     }
 
     @Bean
