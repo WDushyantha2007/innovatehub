@@ -28,7 +28,7 @@ public class JdbcMemberRepository implements MemberRepository {
 
         for (Map row : rows) {
             Member member = new Member();
-            member.setMemberId((Integer)row.get("MemberID"));
+            member.setMemberId((Integer) row.get("MemberID"));
             member.setMemberName((String) row.get("MemberName"));
             member.setMemberUrl((String) row.get("MemberUrl"));
             memberList.add(member);

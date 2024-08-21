@@ -18,7 +18,7 @@ b. Create New Product
 
 Request POST http://localhost:8080/product
 
-Response 
+Response
 
 {
 "productId": 0,
@@ -40,11 +40,9 @@ PUT http://localhost:8080/product
 "productUrl": "t"
 }
 
-
-Response 
+Response
 
 Status : OK
-
 
 d. Delete Product
 
@@ -53,48 +51,65 @@ DELETE http://localhost:8080/product/2
 Response
 Status : OK
 
-
 2. Order Crud
 
 a. Find All Orders GET http://localhost:8080/order
 
-Response 
+Response
 
 [
-    {
-    "orderId": 1,
-    "orderName": "t"
-    }
+{
+"orderId": 1,
+"orderName": "t"
+}
 ]
 
+e. Try to create invalid product
+
+POST http://localhost:8080/product
+
+{
+"productId": 0,
+"productName": "",
+"brand": "t",
+"description": "t",
+"productUrl": "t"
+}
+
+Response
+
+{
+"productId": 0,
+"productName": "",
+"brand": "t",
+"description": "t",
+"productUrl": "t",
+"message": "Invalid product"
+}
 
 b. Create New Order
-
 
     {
         "orderId": 1,
         "orderName": "u"
     }
 
-Response : 
+Response :
 
 Status : OK
 
 c. Update Order
-
 
     {
         "orderId": 2,
         "orderName": "m"
     }
 
-
 Response : Status : OK
 
 Delete Order DELETE http://localhost:8080/order/2
 
 Response : Status OK
-
 
 3. User Crud
 
@@ -122,7 +137,7 @@ POST http://localhost:8080/member
 "memberUrl": "t"
 }
 
-Response : 
+Response :
 
 {
 "memberId": 1,
@@ -140,7 +155,7 @@ c. Update a member :
 
 Response : status ok
 
-d. Delete member 
+d. Delete member
 
 DELETE http://localhost:8080/member/2
 

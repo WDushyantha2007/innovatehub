@@ -1,6 +1,7 @@
 package com.innovatehub.user.web;
 
 import com.innovatehub.user.dao.Member;
+import com.innovatehub.user.dto.UserResponse;
 import com.innovatehub.user.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,29 +11,34 @@ import java.util.List;
 
 @RestController
 public class MemberController {
-    private UserService userService;
+    private UserService userServiceProxy;
 
     public MemberController(UserService userService) {
-        this.userService = userService;
+        this.userServiceProxy = userServiceProxy;
     }
 
     @GetMapping(value = "/member")
     public List<Member> allMembers() {
-        return userService.findAll();
+        return userServiceProxy.findAll();
     }
 
     @PostMapping(value = "/member")
     public ResponseEntity<Member> createMember(@RequestBody Member newMember) {
-        return new ResponseEntity<>(userService.saveMember(newMember), HttpStatus.OK);
+        try {
+            UserResponse userResponse = (UserResponse) userServiceProxy.saveMember(newMember);
+            return new ResponseEntity<>(userResponse, userResponse.getStatusCode());
+        } catch (Exception e) {
+            return new ResponseEntity<>(newMember, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping(value = "/member/{memberId}")
     public void deleteMember(@PathVariable int memberId) {
-        userService.deleteByMemberId(memberId);
+        userServiceProxy.deleteByMemberId(memberId);
     }
 
     @PutMapping(value = "/member")
     public void updateMember(@RequestBody Member member) {
-        userService.updateMember(member);
+        userServiceProxy.updateMember(member);
     }
 }

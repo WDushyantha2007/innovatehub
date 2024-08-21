@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class InnovatehubApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(InnovatehubApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(InnovatehubApplication.class, args);
+    }
 
 }

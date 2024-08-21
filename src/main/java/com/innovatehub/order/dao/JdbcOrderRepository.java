@@ -1,4 +1,5 @@
 package com.innovatehub.order.dao;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class JdbcOrderRepository implements OrderRepository {
     public JdbcOrderRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
     @Override
     public void updateOrder(Order order) {
         String sql = "update Orders set OrderName = ? where OrderID = ?";

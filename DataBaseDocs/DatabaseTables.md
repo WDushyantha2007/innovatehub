@@ -18,7 +18,6 @@ ProductUrl varchar(255) NOT NULL,
 PRIMARY KEY (ProductID)
 );
 
-
 CREATE TABLE Member (
 MemberID int AUTO_INCREMENT,
 MemberName varchar(255) NOT NULL,
@@ -43,8 +42,6 @@ RoleID int AUTO_INCREMENT,
 RoleName varchar(255) NOT NULL,
 PRIMARY KEY (RoleID)
 );
-
-
 
 CREATE TABLE ProductMember (
 Id int AUTO_INCREMENT,
@@ -81,7 +78,6 @@ PRIMARY KEY (Id),
 FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
 FOREIGN KEY (TagID) REFERENCES Tag(TagID)
 );
-
 
 CREATE TABLE ProductMeeting (
 MeetingId int AUTO_INCREMENT,

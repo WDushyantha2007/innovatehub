@@ -2,17 +2,24 @@ package com.innovatehub.config;
 
 import com.innovatehub.order.dao.JdbcOrderRepository;
 import com.innovatehub.order.dao.OrderRepository;
+import com.innovatehub.order.proxy.OrderServiceProxyImpl;
 import com.innovatehub.order.service.OrderService;
 import com.innovatehub.order.service.OrderServiceImpl;
+import com.innovatehub.order.validator.OrderValidator;
 import com.innovatehub.product.dao.JdbcProductRepository;
 import com.innovatehub.product.dao.ProductRepository;
+import com.innovatehub.product.proxy.ProductServiceProxyImpl;
 import com.innovatehub.product.service.ProductService;
 import com.innovatehub.product.service.ProductServiceImpl;
+import com.innovatehub.product.validator.ProductValidator;
 import com.innovatehub.user.dao.JdbcMemberRepository;
 import com.innovatehub.user.dao.MemberRepository;
+import com.innovatehub.user.proxy.UserServiceProxyImpl;
 import com.innovatehub.user.service.UserService;
 import com.innovatehub.user.service.UserServiceImpl;
+import com.innovatehub.user.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -30,16 +37,37 @@ public class InnovateHubConfig {
     }
 
     @Bean
+    @Qualifier("orderServiceProxy")
+    public OrderService orderServiceProxy() {
+        return new OrderServiceProxyImpl(orderService(), orderValidator());
+    }
+
+    @Bean
+    @Qualifier("productServiceProxy")
+    public ProductService productServiceProxy() {
+        return new ProductServiceProxyImpl(productService(), productValidator());
+    }
+
+    @Bean
+    @Qualifier("userServiceProxy")
+    public UserService userServiceProxy() {
+        return new UserServiceProxyImpl(userService(), userValidator());
+    }
+
+    @Bean
+    @Qualifier("productService")
     public ProductService productService() {
         return new ProductServiceImpl(productRepository());
     }
 
     @Bean
+    @Qualifier("orderService")
     public OrderService orderService() {
         return new OrderServiceImpl(orderRepository());
     }
 
     @Bean
+    @Qualifier("userService")
     public UserService userService() {
         return new UserServiceImpl(memberRepository());
     }
@@ -62,4 +90,18 @@ public class InnovateHubConfig {
         return memberRepository;
     }
 
+    @Bean
+    public OrderValidator orderValidator() {
+        return new OrderValidator();
+    }
+
+    @Bean
+    public ProductValidator productValidator() {
+        return new ProductValidator();
+    }
+
+    @Bean
+    public UserValidator userValidator() {
+        return new UserValidator();
+    }
 }
