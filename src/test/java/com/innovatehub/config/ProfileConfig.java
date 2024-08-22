@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 public class ProfileConfig {
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         return
                 (new EmbeddedDatabaseBuilder())
                         .build();

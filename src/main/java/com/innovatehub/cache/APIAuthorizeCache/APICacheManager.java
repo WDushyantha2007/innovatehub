@@ -31,6 +31,10 @@ public class APICacheManager {
         tokenPrev.put(id, roleId);
     }
 
+    public static void clearCache() {
+        tokenPrev.clear();
+    }
+
     public boolean containsToken(String id) {
         return tokenPrev.containsKey(id);
     }

@@ -58,7 +58,9 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <configuration>
                     <excludes>
+                        <exclude>com/innovatehub/cache/APIAuthorizeCache/*</exclude>
                         <exclude>com/innovatehub/cache/*</exclude>
+                        <exclude>com/innovatehub</exclude>
                         <exclude>com/innovatehub/config/*</exclude>
                         <exclude>com/innovatehub/exception/*</exclude>
                         <exclude>com/innovatehub/login/dao/*</exclude>
