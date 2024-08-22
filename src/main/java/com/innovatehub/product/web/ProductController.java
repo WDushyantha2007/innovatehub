@@ -21,11 +21,30 @@ public class ProductController {
         this.productServiceProxy = productServiceProxy;
     }
 
+    /**
+     * Return all products with 200 status.
+     * If token is invalid return 401.
+     *
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @GetMapping(value = "/product")
     public List<Product> allProducts(@RequestHeader("tokenID") String tokenID) throws APISecurityException {
         return productServiceProxy.findAllProduct(tokenID);
     }
 
+    /**
+     * Save the product. If security error comes return 401.
+     * If product is invalid return 400 with given product.
+     * If product is valid return 200 with valid product.
+     * If security token is invalid return 401 error.
+     *
+     * @param newProduct
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @PostMapping(value = "/product")
     public ResponseEntity<Product> createProduct(@RequestBody Product newProduct, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         try {
@@ -38,16 +57,37 @@ public class ProductController {
         }
     }
 
+    /**
+     * Delete the provided product and return 200 status code.
+     * If token is invalid return 401.
+     *
+     * @param productId
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @DeleteMapping(value = "/product/{productId}")
     public void deleteProduct(@PathVariable int productId, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         productServiceProxy.deleteByProductId(productId, tokenID);
     }
 
+    /**
+     * Update the product and return 200 status code.
+     * If token is invalid return 401.
+     *
+     * @param product
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @PutMapping(value = "/product")
     public void updateProduct(@RequestBody Product product, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         productServiceProxy.updateProduct(product, tokenID);
     }
 
+    /**
+     * If security error comes return 401.
+     *
+     * @param ex
+     */
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(APISecurityException.class)
     public void handleUnAuthorized(APISecurityException ex) {

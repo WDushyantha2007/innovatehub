@@ -20,6 +20,15 @@ public class OrderServiceProxyImpl implements OrderProxyService {
         this.orderValidator = orderValidator;
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes then update order
+     *
+     * @param order
+     * @param tokenID
+     * @throws APISecurityException
+     */
+
     @Override
     public void updateOrder(Order order, String tokenID) throws APISecurityException {
 
@@ -29,6 +38,15 @@ public class OrderServiceProxyImpl implements OrderProxyService {
 
         orderService.updateOrder(order);
     }
+
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes return all order.
+     *
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
 
     @Override
     public List<Order> findAllOrder(String tokenID) throws APISecurityException {
@@ -40,6 +58,15 @@ public class OrderServiceProxyImpl implements OrderProxyService {
         return orderService.findAllOrder();
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes  delete the order.
+     *
+     * @param OrderID
+     * @param tokenID
+     * @throws APISecurityException
+     */
+
     @Override
     public void deleteByOrderId(int OrderID, String tokenID) throws APISecurityException {
 
@@ -49,6 +76,17 @@ public class OrderServiceProxyImpl implements OrderProxyService {
 
         orderService.deleteByOrderId(OrderID);
     }
+
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes validate the order.
+     * If valid then save the order.
+     *
+     * @param order
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
 
     @Override
     public Order saveOrder(Order order, String tokenID) throws APISecurityException {

@@ -14,12 +14,20 @@ public class JdbcMemberRepository implements MemberRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Update the given member details.
+     * @param member
+     */
     @Override
     public void updateMember(Member member) {
         String sql = "update member set MemberName = ?, MemberUrl = ? where MemberID = ?";
         jdbcTemplate.update(sql, member.getMemberName(), member.getMemberUrl(), member.getMemberId());
     }
 
+    /**
+     * Return all members.
+     * @return List of members.
+     */
     @Override
     public List<Member> findAll() {
         List<Member> memberList = new ArrayList<>();
@@ -37,12 +45,21 @@ public class JdbcMemberRepository implements MemberRepository {
         return memberList;
     }
 
+    /**
+     * Delete member by given ID.
+     * @param MemberID
+     */
     @Override
     public void deleteByMemberId(int MemberID) {
         String sql = "delete from member where MemberID = ?";
         jdbcTemplate.update(sql, MemberID);
     }
 
+    /**
+     * Persist the given member to the database.
+     * @param member
+     * @return Given member.
+     */
     @Override
     public Member saveMember(Member member) {
         String sql = "insert into member(MemberName,MemberUrl) values (?, ?)";

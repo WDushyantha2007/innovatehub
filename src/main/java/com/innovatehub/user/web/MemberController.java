@@ -20,11 +20,28 @@ public class MemberController {
         this.userServiceProxy = userServiceProxy;
     }
 
+    /**
+     * Return all members with 200 status.
+     * If token is invalid return 401.
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @GetMapping(value = "/member")
     public List<Member> allMembers(@RequestHeader("tokenID") String tokenID) throws APISecurityException {
         return userServiceProxy.findAll(tokenID);
     }
 
+    /**
+     * Save the member. If security error comes return 401.
+     * If member is invalid return 400 with given order.
+     * If member is valid return 200 with valid order.
+     * If security token is invalid return 401 error.
+     * @param newMember
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @PostMapping(value = "/member")
     public ResponseEntity<Member> createMember(@RequestBody Member newMember, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         try {
@@ -37,16 +54,34 @@ public class MemberController {
         }
     }
 
+    /**
+     * Delete the given member with 200 status.
+     * If token is invalid return 401.
+     * @param memberId
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @DeleteMapping(value = "/member/{memberId}")
     public void deleteMember(@PathVariable int memberId, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         userServiceProxy.deleteByMemberId(memberId, tokenID);
     }
 
+    /**
+     * Update the given member with 200 status.
+     * If token is invalid return 401.
+     * @param member
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @PutMapping(value = "/member")
     public void updateMember(@RequestBody Member member, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         userServiceProxy.updateMember(member, tokenID);
     }
 
+    /**
+     * If security error comes return 401.
+     * @param ex
+     */
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(APISecurityException.class)
     public void handleUnAuthorized(APISecurityException ex) {

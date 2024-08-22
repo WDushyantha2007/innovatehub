@@ -20,6 +20,12 @@ public class AuthController {
     }
 
 
+    /**
+     * Find the user with given user id and bcrypt password.
+     *
+     * @param loginDto
+     * @return User object.
+     */
     @PostMapping(value = "/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
         return new ResponseEntity<>(loginService.findUserById(loginDto.getUserId(), loginDto.getbCryptPassword()),

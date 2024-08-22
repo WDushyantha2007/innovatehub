@@ -9,6 +9,11 @@ public class UserValidator {
 
     }
 
+    /**
+     * Validate the member as valid or not.
+     * @param member
+     * @return Return member as valid or not.
+     */
     public boolean isValid(Member member) {
         if (StringUtil.isNullOrEmpty(member.getMemberName())) {
             return false;

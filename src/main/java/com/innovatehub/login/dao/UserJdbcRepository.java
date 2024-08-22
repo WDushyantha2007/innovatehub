@@ -13,6 +13,13 @@ public class UserJdbcRepository implements UserRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Find the user by given Id.
+     *
+     * @param userId
+     * @return User
+     */
+
     @Override
     public User findUserById(int userId) {
         User user = new User();

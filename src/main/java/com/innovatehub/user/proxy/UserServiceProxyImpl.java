@@ -20,6 +20,13 @@ public class UserServiceProxyImpl implements UserServiceProxy {
         this.userValidator = userValidator;
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes update the member.
+     * @param member
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @Override
     public void updateMember(Member member, String tokenID) throws APISecurityException {
 
@@ -30,6 +37,13 @@ public class UserServiceProxyImpl implements UserServiceProxy {
         userService.updateMember(member);
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes return all members.
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @Override
     public List<Member> findAll(String tokenID) throws APISecurityException {
 
@@ -40,6 +54,13 @@ public class UserServiceProxyImpl implements UserServiceProxy {
         return userService.findAll();
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes delete member by Id.
+     * @param MemberID
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @Override
     public void deleteByMemberId(int MemberID, String tokenID) throws APISecurityException {
 
@@ -50,6 +71,15 @@ public class UserServiceProxyImpl implements UserServiceProxy {
         userService.deleteByMemberId(MemberID);
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes validate member.
+     * If valid then save the member.
+     * @param member
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @Override
     public Member saveMember(Member member, String tokenID) throws APISecurityException {
 

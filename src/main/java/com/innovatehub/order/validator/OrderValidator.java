@@ -9,6 +9,12 @@ public class OrderValidator {
 
     }
 
+    /**
+     * Validate the order.
+     *
+     * @param order
+     * @return order is valid or not.
+     */
     public boolean isValid(Order order) {
         if (StringUtil.isNullOrEmpty(order.getOrderName())) {
             return false;

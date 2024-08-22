@@ -14,12 +14,23 @@ public class JdbcOrderRepository implements OrderRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Update the given order.
+     *
+     * @param order
+     * @return Given order.
+     */
     @Override
     public void updateOrder(Order order) {
         String sql = "update Orders set OrderName = ? where OrderID = ?";
         jdbcTemplate.update(sql, order.getOrderName(), order.getOrderId());
     }
 
+    /**
+     * Find all orders.
+     *
+     * @return List of orders.
+     */
     @Override
     public List<Order> findAllOrder() {
         List<Order> orderList = new ArrayList<>();
@@ -36,12 +47,23 @@ public class JdbcOrderRepository implements OrderRepository {
         return orderList;
     }
 
+    /**
+     * Delete the order by  given id.
+     *
+     * @param OrderID
+     */
     @Override
     public void deleteByOrderId(int OrderID) {
         String sql = "delete from Orders where OrderID = ?";
         jdbcTemplate.update(sql, OrderID);
     }
 
+    /**
+     * Save the given order.
+     *
+     * @param order
+     * @return given order.
+     */
     @Override
     public Order saveOrder(Order order) {
         String sql = "insert into Orders(OrderName) values (?)";

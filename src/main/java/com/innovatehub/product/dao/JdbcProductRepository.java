@@ -14,6 +14,11 @@ public class JdbcProductRepository implements ProductRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    /**
+     * Update the given product.
+     *
+     * @param product
+     */
     @Override
     public void updateProduct(Product product) {
         String sql = "update product set ProductName = ?, Brand = ?, Description = ?, ProductUrl = ? where ProductID = ?";
@@ -21,6 +26,11 @@ public class JdbcProductRepository implements ProductRepository {
                 product.getDescription(), product.getProductUrl(), product.getProductId());
     }
 
+    /**
+     * Return all products
+     *
+     * @return all products.
+     */
     @Override
     public List<Product> findAllProduct() {
         List<Product> productList = new ArrayList<>();
@@ -40,12 +50,23 @@ public class JdbcProductRepository implements ProductRepository {
         return productList;
     }
 
+    /**
+     * Delete the given product.
+     *
+     * @param productID
+     */
     @Override
     public void deleteByProductId(int productID) {
         String sql = "delete from product where ProductID = ?";
         jdbcTemplate.update(sql, productID);
     }
 
+    /**
+     * Save the product to the database.
+     *
+     * @param product
+     * @return given product.
+     */
     @Override
     public Product saveProduct(Product product) {
         String sql = "insert into product(ProductName, Brand, Description, ProductUrl) values (?,?,?,?)";

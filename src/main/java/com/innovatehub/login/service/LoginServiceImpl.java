@@ -14,6 +14,15 @@ public class LoginServiceImpl implements LoginService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Find user with given user id. Match user password with provided password.
+     * If match new token generated and added to role cache and return new token
+     * Else return empty token.
+     *
+     * @param userId         user id
+     * @param bCryptPassword user bcrypt password
+     * @return security token
+     */
     @Override
     public String findUserById(int userId, String bCryptPassword) {
         User user = userRepository.findUserById(userId);

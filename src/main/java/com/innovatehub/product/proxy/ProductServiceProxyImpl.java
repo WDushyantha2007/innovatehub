@@ -20,6 +20,14 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
         this.productValidator = productValidator;
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes update product.
+     *
+     * @param product
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @Override
     public void updateProduct(Product product, String tokenID) throws APISecurityException {
 
@@ -30,6 +38,14 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
         productService.updateProduct(product);
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes return all products.
+     *
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @Override
     public List<Product> findAllProduct(String tokenID) throws APISecurityException {
 
@@ -40,6 +56,14 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
         return productService.findAllProduct();
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes delete the product.
+     *
+     * @param productID
+     * @param tokenID
+     * @throws APISecurityException
+     */
     @Override
     public void deleteByProductId(int productID, String tokenID) throws APISecurityException {
 
@@ -50,6 +74,16 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
         productService.deleteByProductId(productID);
     }
 
+    /**
+     * Check user has valid security token which has access to the api.
+     * If yes validate the product.
+     * If valid then save the product.
+     *
+     * @param product
+     * @param tokenID
+     * @return
+     * @throws APISecurityException
+     */
     @Override
     public Product saveProduct(Product product, String tokenID) throws APISecurityException {
 
