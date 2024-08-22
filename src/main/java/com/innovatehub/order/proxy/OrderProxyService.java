@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderProxyService {
 
-    public void updateOrder(Order order, String tokenID)throws APISecurityException;
+    public void updateOrder(Order order, String tokenID) throws APISecurityException;
 
     public List<Order> findAllOrder(String tokenID) throws APISecurityException;
 

@@ -12,6 +12,18 @@ public class Product {
 
     private String productUrl;
 
+    public Product() {
+
+    }
+
+    public Product(int productId, String productName, String brand, String description, String productUrl) {
+        this.productId = productId;
+        this.productName = productName;
+        this.brand = brand;
+        this.description = description;
+        this.productUrl = productUrl;
+    }
+
     public int getProductId() {
         return productId;
     }

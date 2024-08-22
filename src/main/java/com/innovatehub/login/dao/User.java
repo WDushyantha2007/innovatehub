@@ -6,6 +6,16 @@ public class User {
     private String bCryptPassword;
     private int roleId;
 
+    public User() {
+
+    }
+
+    public User(int userId, String bCryptPassword, int roleId) {
+        this.userId = userId;
+        this.bCryptPassword = bCryptPassword;
+        this.roleId = roleId;
+    }
+
     public int getUserId() {
         return userId;
     }

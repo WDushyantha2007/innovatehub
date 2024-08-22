@@ -14,7 +14,6 @@ POST http://localhost:8080/product
 "productUrl": "t"
 }
 
-
 Response :
 
 Status : 400 Bad Request
@@ -42,7 +41,6 @@ POST http://localhost:8080/order
 "orderName": ""
 }
 
-
 Response :
 
 Status : 400 Bad Request
@@ -50,7 +48,7 @@ Status : 400 Bad Request
 {
 "orderId": 1,
 "orderName": "",
-"message": "Invalid  order request",
+"message": "Invalid order request",
 "statusCode": "BAD_REQUEST"
 }
 
@@ -67,7 +65,6 @@ POST http://localhost:8080/member
 "memberName": "",
 "memberUrl": "t"
 }
-
 
 Response :
 

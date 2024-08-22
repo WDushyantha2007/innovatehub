@@ -21,9 +21,9 @@ public class OrderServiceProxyImpl implements OrderProxyService {
     }
 
     @Override
-    public void updateOrder(Order order, String tokenID)throws APISecurityException {
+    public void updateOrder(Order order, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -31,9 +31,9 @@ public class OrderServiceProxyImpl implements OrderProxyService {
     }
 
     @Override
-    public List<Order> findAllOrder(String tokenID)throws APISecurityException {
+    public List<Order> findAllOrder(String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -41,9 +41,9 @@ public class OrderServiceProxyImpl implements OrderProxyService {
     }
 
     @Override
-    public void deleteByOrderId(int OrderID, String tokenID)throws APISecurityException {
+    public void deleteByOrderId(int OrderID, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -51,9 +51,9 @@ public class OrderServiceProxyImpl implements OrderProxyService {
     }
 
     @Override
-    public Order saveOrder(Order order, String tokenID)throws APISecurityException {
+    public Order saveOrder(Order order, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "order")) {
             throw new APISecurityException("Unauthorized operation");
         }
 

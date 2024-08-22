@@ -21,9 +21,9 @@ public class UserServiceProxyImpl implements UserServiceProxy {
     }
 
     @Override
-    public void updateMember(Member member, String tokenID)throws APISecurityException {
+    public void updateMember(Member member, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -31,9 +31,9 @@ public class UserServiceProxyImpl implements UserServiceProxy {
     }
 
     @Override
-    public List<Member> findAll(String tokenID)throws APISecurityException {
+    public List<Member> findAll(String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -41,9 +41,9 @@ public class UserServiceProxyImpl implements UserServiceProxy {
     }
 
     @Override
-    public void deleteByMemberId(int MemberID, String tokenID)throws APISecurityException {
+    public void deleteByMemberId(int MemberID, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -51,9 +51,9 @@ public class UserServiceProxyImpl implements UserServiceProxy {
     }
 
     @Override
-    public Member saveMember(Member member, String tokenID)throws APISecurityException {
+    public Member saveMember(Member member, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "user")) {
             throw new APISecurityException("Unauthorized operation");
         }
 

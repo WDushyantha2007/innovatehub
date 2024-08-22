@@ -13,11 +13,13 @@ public class LoginServiceImpl implements LoginService {
     public LoginServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     @Override
     public String findUserById(int userId, String bCryptPassword) {
         User user = userRepository.findUserById(userId);
-        String uuid = UUID.randomUUID().toString();
-        if(bCryptPassword.equals(user.getbCryptPassword())) {
+        String uuid = "";
+        if (user != null && bCryptPassword.equals(user.getbCryptPassword())) {
+            uuid = UUID.randomUUID().toString();
             APICacheManager.addTokenPrevilages(uuid, user.getUserId());
         }
         return uuid;

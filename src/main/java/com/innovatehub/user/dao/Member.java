@@ -7,6 +7,16 @@ public class Member {
 
     private String memberUrl;
 
+    public Member() {
+
+    }
+
+    public Member(int memberId, String memberName, String memberUrl) {
+        this.memberId = memberId;
+        this.memberName = memberName;
+        this.memberUrl = memberUrl;
+    }
+
     public int getMemberId() {
         return memberId;
     }

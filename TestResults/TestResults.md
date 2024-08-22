@@ -77,7 +77,7 @@ Status : 200 OK
 
 d. Delete Product
 
-Request : 
+Request :
 
 Header
 tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
@@ -89,7 +89,7 @@ Status : 200 OK
 
 2. Order Crud
 
-a. Find All Orders 
+a. Find All Orders
 
 Request
 
@@ -148,11 +148,11 @@ PUT http://localhost:8080/order
         "orderName": "m"
     }
 
-Response : 
+Response :
 
 Status : 200 OK
 
-Delete Order 
+Delete Order
 
 Request
 
@@ -161,7 +161,7 @@ tokenID: 2a0716a8-f107-423a-a1d3-f4478266311c
 
 DELETE http://localhost:8080/order/2
 
-Response : 
+Response :
 
 Status : 200 OK
 

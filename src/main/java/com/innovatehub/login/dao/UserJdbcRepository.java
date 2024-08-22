@@ -1,4 +1,5 @@
 package com.innovatehub.login.dao;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 public class UserJdbcRepository implements UserRepository {
 
     private JdbcTemplate jdbcTemplate;
+
     public UserJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }

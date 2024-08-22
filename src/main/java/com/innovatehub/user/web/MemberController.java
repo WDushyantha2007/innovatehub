@@ -4,7 +4,6 @@ import com.innovatehub.exception.APISecurityException;
 import com.innovatehub.user.dao.Member;
 import com.innovatehub.user.dto.UserResponse;
 import com.innovatehub.user.proxy.UserServiceProxy;
-import com.innovatehub.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +21,12 @@ public class MemberController {
     }
 
     @GetMapping(value = "/member")
-    public List<Member> allMembers(@RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public List<Member> allMembers(@RequestHeader("tokenID") String tokenID) throws APISecurityException {
         return userServiceProxy.findAll(tokenID);
     }
 
     @PostMapping(value = "/member")
-    public ResponseEntity<Member> createMember(@RequestBody Member newMember, @RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public ResponseEntity<Member> createMember(@RequestBody Member newMember, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         try {
             UserResponse userResponse = (UserResponse) userServiceProxy.saveMember(newMember, tokenID);
             return new ResponseEntity<>(userResponse, userResponse.getStatusCode());
@@ -39,12 +38,12 @@ public class MemberController {
     }
 
     @DeleteMapping(value = "/member/{memberId}")
-    public void deleteMember(@PathVariable int memberId, @RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public void deleteMember(@PathVariable int memberId, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         userServiceProxy.deleteByMemberId(memberId, tokenID);
     }
 
     @PutMapping(value = "/member")
-    public void updateMember(@RequestBody Member member, @RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public void updateMember(@RequestBody Member member, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         userServiceProxy.updateMember(member, tokenID);
     }
 

@@ -11,7 +11,7 @@ public class APICacheManager {
     private static HashMap<String, Integer> tokenPrev = new HashMap<>();
 
     public static synchronized HashMap<Integer, List<String>> getRoleApiMap() {
-        if(apiAccessMap == null) {
+        if (apiAccessMap == null) {
             apiAccessMap = new HashMap<>();
             List<String> apiList = new ArrayList<>();
             apiList.add("product");
@@ -23,8 +23,8 @@ public class APICacheManager {
     }
 
     public static boolean findRoleHasAPIAcesss(String tokenID, String api) {
-        int roleId = tokenPrev.get(tokenID) == null ? 0: tokenPrev.get(tokenID);
-        return roleId == 0 ? false :getRoleApiMap().get(roleId).contains(api);
+        int roleId = tokenPrev.get(tokenID) == null ? 0 : tokenPrev.get(tokenID);
+        return roleId == 0 ? false : getRoleApiMap().get(roleId).contains(api);
     }
 
     public static synchronized void addTokenPrevilages(String id, int roleId) {

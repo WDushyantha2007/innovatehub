@@ -6,6 +6,15 @@ public class Order {
 
     private String orderName;
 
+    public Order() {
+
+    }
+
+    public Order(int orderId, String orderName) {
+        this.orderId = orderId;
+        this.orderName = orderName;
+    }
+
     public int getOrderId() {
         return orderId;
     }

@@ -21,9 +21,9 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
     }
 
     @Override
-    public void updateProduct(Product product, String tokenID)throws APISecurityException {
+    public void updateProduct(Product product, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -31,9 +31,9 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
     }
 
     @Override
-    public List<Product> findAllProduct(String tokenID)throws APISecurityException {
+    public List<Product> findAllProduct(String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -41,9 +41,9 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
     }
 
     @Override
-    public void deleteByProductId(int productID, String tokenID)throws APISecurityException {
+    public void deleteByProductId(int productID, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
             throw new APISecurityException("Unauthorized operation");
         }
 
@@ -51,9 +51,9 @@ public class ProductServiceProxyImpl implements ProductServiceProxy {
     }
 
     @Override
-    public Product saveProduct(Product product, String tokenID)throws APISecurityException {
+    public Product saveProduct(Product product, String tokenID) throws APISecurityException {
 
-        if(!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
+        if (!APICacheManager.findRoleHasAPIAcesss(tokenID, "product")) {
             throw new APISecurityException("Unauthorized operation");
         }
 

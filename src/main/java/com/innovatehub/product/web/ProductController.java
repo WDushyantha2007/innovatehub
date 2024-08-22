@@ -4,7 +4,6 @@ import com.innovatehub.exception.APISecurityException;
 import com.innovatehub.product.dao.Product;
 import com.innovatehub.product.dto.ProductResponse;
 import com.innovatehub.product.proxy.ProductServiceProxy;
-import com.innovatehub.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,17 +17,17 @@ public class ProductController {
     private ProductServiceProxy productServiceProxy;
 
     @Autowired
-    public ProductController(ProductServiceProxy productServiceProxy)throws APISecurityException {
+    public ProductController(ProductServiceProxy productServiceProxy) throws APISecurityException {
         this.productServiceProxy = productServiceProxy;
     }
 
     @GetMapping(value = "/product")
-    public List<Product> allProducts(@RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public List<Product> allProducts(@RequestHeader("tokenID") String tokenID) throws APISecurityException {
         return productServiceProxy.findAllProduct(tokenID);
     }
 
     @PostMapping(value = "/product")
-    public ResponseEntity<Product> createProduct(@RequestBody Product newProduct, @RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public ResponseEntity<Product> createProduct(@RequestBody Product newProduct, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         try {
             ProductResponse productResponse = (ProductResponse) productServiceProxy.saveProduct(newProduct, tokenID);
             return new ResponseEntity<>(productResponse, productResponse.getStatusCode());
@@ -40,12 +39,12 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "/product/{productId}")
-    public void deleteProduct(@PathVariable int productId, @RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public void deleteProduct(@PathVariable int productId, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         productServiceProxy.deleteByProductId(productId, tokenID);
     }
 
     @PutMapping(value = "/product")
-    public void updateProduct(@RequestBody Product product, @RequestHeader("tokenID") String tokenID)throws APISecurityException {
+    public void updateProduct(@RequestBody Product product, @RequestHeader("tokenID") String tokenID) throws APISecurityException {
         productServiceProxy.updateProduct(product, tokenID);
     }
 

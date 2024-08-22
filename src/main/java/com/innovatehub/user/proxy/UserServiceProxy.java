@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserServiceProxy {
 
-    public void updateMember(Member member, String tokenID)throws APISecurityException;
+    public void updateMember(Member member, String tokenID) throws APISecurityException;
 
     public List<Member> findAll(String tokenID) throws APISecurityException;
 
