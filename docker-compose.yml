@@ -3,7 +3,7 @@
       container_name: "mysqldb"
       image: mysql:8.4
       environment:
-        MYSQL_ROOT_PASSWORD: root
+        MYSQL_ROOT_PASSWORD:
         MYSQL_DATABASE: innovatehub
         MYSQL_USER:
         MYSQL_PASSWORD:

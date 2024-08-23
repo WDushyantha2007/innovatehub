@@ -94,5 +94,4 @@ Password varchar(255) NOT NULL,
 roleId int NOT NULL,
 PRIMARY KEY (UserID));
 
-insert into user(UserName,Password,roleId) values('TestUser1', '
-$2a$12$gUx/v.wOsIdFctF.vzZ4p.8/PlBMaTM.JKCI.yR/FCMSzxk2NHhIu', 1);
+insert into User(UserName,Password,roleId) values('TestUser1', '$2a$12$gUx/v.wOsIdFctF.vzZ4p.8/PlBMaTM.JKCI.yR/FCMSzxk2NHhIu', 1);

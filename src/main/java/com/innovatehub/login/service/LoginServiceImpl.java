@@ -29,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
         String uuid = "";
         if (user != null && bCryptPassword.equals(user.getbCryptPassword())) {
             uuid = UUID.randomUUID().toString();
-            APICacheManager.addTokenPrevilages(uuid, user.getUserId());
+            APICacheManager.addTokenPrevilages(uuid, user.getRoleId());
         }
         return uuid;
     }

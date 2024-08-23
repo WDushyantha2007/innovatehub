@@ -1,4 +1,4 @@
-1. To Deploy the application execute following command.
+1To Deploy the application execute following command.
 
 docker-compose up -d
 
@@ -10,6 +10,7 @@ docker network inspect innovatehub-network
 3. Connect network to database service
 
 docker network connect innovatehub-network mysqldb
+docker network inspect innovatehub-network
 
 4. Verify network is correctly created.
 
@@ -60,11 +61,12 @@ docker network inspect innovatehub-network
 }
 ]
 
-
-5. Create database and tables manually using scripts in the database docs.
-
-6. Grant user with access.
+5. Grant user with access.
 
 GRANT ALL PRIVILEGES ON innovatehub.* TO 'dbUser'@'%';
-use
+use innovatehub;
 GRANT ALL PRIVILEGES ON innovatehub TO 'dbUser'@'%';
+
+6. Create database and tables manually using scripts in the database docs.
+
+7. Add password accordingly.
