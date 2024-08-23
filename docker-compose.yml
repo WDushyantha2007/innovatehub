@@ -1,0 +1,34 @@
+  services:
+    mysqldb:
+      container_name: "mysqldb"
+      image: mysql:8.4
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: innovatehub
+        MYSQL_USER:
+        MYSQL_PASSWORD:
+      ports:
+        - 3306:3306
+      networks:
+        innovatehub-network:
+
+    innovatehubwebapp:
+      container_name: innovatehubwebapp
+      build: .
+      environment:
+        USER:
+        PASS:
+        SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/innovatehub
+        SPRING_DATASOURCE_USERNAME:
+        SPRING_DATASOURCE_PASSWORD:
+      ports:
+        - 8080:8080
+      networks:
+        innovatehub-network:
+      restart: on-failure
+      volumes:
+        - .m2:/root/.m2
+
+  networks:
+    innovatehub-network:
+      driver: bridge

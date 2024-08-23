@@ -1,0 +1,1 @@
+insert into user(UserName, Password, roleId) values('TestUser1', '$2a$12$gUx/v.wOsIdFctF.vzZ4p.8/PlBMaTM.JKCI.yR/FCMSzxk2NHhIu', 1);
